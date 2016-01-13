@@ -29,30 +29,3 @@ htest_data_frame <- function(htest.list) {
 
   return(stats.data)
 }
-
-# htest.frame tests
-
-a <- list()
-a[[1]] <- cor.test(rnorm(10), rnorm(10))
-a[[2]] <- cor.test(rnorm(10), rnorm(10))
-a[[3]] <- cor.test(rnorm(10), rnorm(10))
-
-b <- list()
-b[[1]] <- ks.test(rnorm(10), rnorm(10))
-b[[2]] <- ks.test(rnorm(10), rnorm(10))
-b[[3]] <- ks.test(rnorm(10), rnorm(10))
-
-c <- list()
-c[[1]] <- wilcox.test(rnorm(10), rnorm(10))
-c[[2]] <- wilcox.test(rnorm(10), rnorm(10))
-c[[3]] <- wilcox.test(rnorm(10), rnorm(10))
-
-d <- list()
-d[[1]] <- t.test(rnorm(10), rnorm(10))
-d[[2]] <- t.test(rnorm(10), rnorm(10))
-d[[3]] <- t.test(rnorm(10), rnorm(10))
-
-htest.frame(a) # cor.test
-htest.frame(b) # ks.test
-htest.frame(c) # wilcox.test
-htest.frame(d) # t.test
