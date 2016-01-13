@@ -2,7 +2,7 @@
 % Please edit documentation in R/htest_data_frame.R
 \name{htest_data_frame}
 \alias{htest_data_frame}
-\title{Title}
+\title{Convert an htest list, or a list of htest lists to a data.frame}
 \usage{
 htest_data_frame(htest.list)
 }
@@ -13,7 +13,7 @@ htest_data_frame(htest.list)
 Returns a \code{data.frame} with data from one or more htests
 }
 \description{
-Title
+Convert an htest list, or a list of htest lists to a data.frame
 }
 \examples{
 a <- list()

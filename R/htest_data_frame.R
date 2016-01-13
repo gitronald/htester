@@ -1,3 +1,18 @@
+#' Convert an htest list, or a list of htest lists to a data.frame
+#'
+#' @param htest.list a single htest list or a list of htest lists
+#'
+#' @return
+#'    Returns a \code{data.frame} with data from one or more htests
+#' @export
+#'
+#' @examples
+#' a <- list()
+#' a[[1]] <- cor.test(rnorm(10), rnorm(10))
+#' a[[2]] <- cor.test(rnorm(10), rnorm(10))
+#' a[[3]] <- cor.test(rnorm(10), rnorm(10))
+#' htest_data_frame(a)
+#'
 htest_data_frame <- function(htest.list) {
   # Converts list of htest lists into a data.frame
   # Automatically collects variable names
