@@ -7,6 +7,13 @@ htest_data_frame <- function(htest.list) {
   item.lengths <- sapply(data1, length) # Find max list length
   col.names <- names(data1[[which.max(item.lengths)]]) # Take col names from largest sub list
 
+#
+#   ll <- list_lengths(data1)
+#   if (max(sapply(ll$overOne, length)) > 1) {
+#     sapply(seq_along(d), function(x) sapply(seq_along(ll$overOne), function(y) names(d[[x]][ll$overOne[[y]]])), simplify = F)
+#   }
+
+
   if(sum(grepl("conf.int", col.names)) > 0) {
     for (i in 1:length(data1)) {
       data1[[i]][["ci.min"]] <- data1[[i]][["conf.int"]][1]
