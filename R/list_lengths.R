@@ -27,7 +27,7 @@ list_lengths <- function(data1, overOne = TRUE) {
   )
 
   if (overOne) {
-    max <- sapply(seq_along(data1), function(x) which(data1[[x]] > 1))
+    max <- sapply(seq_along(data1), function(x) which(data1[[x]] > 1), simplify=F)
     list1 <- list(data1,
                   max)
     names(list1) <- c("length", "overOne")
