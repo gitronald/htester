@@ -24,3 +24,24 @@ htest_data_frame(a) # cor.test
 htest_data_frame(b) # ks.test
 htest_data_frame(c) # wilcox.test
 htest_data_frame(d) # t.test
+
+
+
+
+exlist1 <- list(list(1, 2, c(3, 0)),
+                list(1, 2, c(3, 0)),
+                list(1, 2, c(3, 0))
+                )
+list_lengths(exlist1)
+
+exlist2 <- list(list(1, 2, 3),
+                list(1, 2, c(3, 0)),
+                list(1, 2, c(3, 0))
+)
+list_lengths(exlist2)
+
+exlist3 <- list(list(1, c(3, 0), c(3, 0)),
+                list(1, c(3, 0), c(3, 0)),
+                list(1, c(3, 0), c(3, 0))
+)
+list_lengths(exlist3)
