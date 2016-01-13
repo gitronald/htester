@@ -17,12 +17,12 @@ htest_data_frame <- function(htest.list) {
     col.names <- c(col.names, "ci.min", "ci.max")
   }
 
-  # Create data receptacle
+  # Create data structure
   stats.data <- setNames(data.frame(matrix(ncol = length(col.names),
                                            nrow = length(data1))),
                          nm = col.names)
 
-  # Fill data receptacle
+  # Fill data structure by row
   for(i in col.names) {
     stats.data[, i] <- sapply(seq_along(data1), function(x) data1[[x]][[i]])
   }
