@@ -9,15 +9,24 @@
 #' @return A list showing the lengths of the nested list items and the index for
 #'   idenitfying items with a length greater than one.
 #' @export
-#'
 #' @examples
-#' exlist <- list(list(1, 2, c(3, 0)),
-#'                list(1, c(3, 0), 2),
-#'                list(1, c(3, 0), 2)
-#'                )
+#' exlist1 <- list(list(1, 2, c(3, 0)),
+#'                 list(1, 2, c(3, 0)),
+#'                 list(1, 2, c(3, 0))
+#'                 )
+#' list_lengths(exlist1)
 #'
-#' list_lengths(exlist)
+#' exlist2 <- list(list(1, 2, 3),
+#'                 list(1, 2, c(3, 0)),
+#'                 list(1, 2, c(3, 0))
+#' )
+#' list_lengths(exlist2)
 #'
+#' exlist3 <- list(list(1, c(3, 0), c(3, 0)),
+#'                 list(1, c(3, 0), c(3, 0)),
+#'                 list(1, c(3, 0), c(3, 0))
+#' )
+#' list_lengths(exlist3)
 list_lengths <- function(data1, overOne = TRUE) {
   data1 <- lapply(seq_along(data1),
                   function(x) {
@@ -28,8 +37,7 @@ list_lengths <- function(data1, overOne = TRUE) {
 
   if (overOne) {
     max <- sapply(seq_along(data1), function(x) which(data1[[x]] > 1), simplify=F)
-    list1 <- list(data1,
-                  max)
+    list1 <- list(data1, max)
     names(list1) <- c("length", "overOne")
     return (list1)
   } else {
