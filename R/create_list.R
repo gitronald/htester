@@ -18,9 +18,7 @@
 #'
 #' # Generate lists, each of length 4
 #' create_list(htest.names, 4)
-#'
 create_list <- function(list.names, list.lengths) {
-  # Generate list of lists named after list.names, each containing a list of length list.lengths
   new.list <- sapply(list.names, function(x) lapply(x, function(x) vector("list", length = list.lengths)))
   return(new.list)
 }
