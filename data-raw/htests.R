@@ -1,73 +1,58 @@
 # Data for testing htest_data_frame
-#
 # Naming convention: data. + name of test function + .method
 
+htest.names <- c("cor.test.pearson",
+                 "cor.test.spearman",
+                 "cor.test.kendall",
+                 "ks.test",
+                 "wilcox.test.paired",
+                 "wilcox.test.unpaired",
+                 "t.test.paired",
+                 "t.test.unpaired")
 
-htest.names <- c("data.cor.test.pearson",
-                 "data.ks.test",
-                 "data.wilcox.test.wilcox",
-                 "data.t.test")
+htest.length <- 3  # Set length of each list (i.e. how many times to conduct each test)
+htests <- create_list(htest.names, htest.length)  # Create lists
 
-htests <- sapply(htests.names, function(x) lapply(x, function(x) vector("list", length = 3)))
+## Fill lists
 
+# Correlation Tests, Pearson's r
+htests[["cor.test.pearson"]] <- lapply(seq(htest.length), function(x){
+  htests[["cor.test.pearson"]][[x]] <- cor.test(rnorm(10), rnorm(10), method = "pearson")
+})
 
-# Correlation Tests, Pearson
-htests[["data.cor.test.pearson"]] <- lapply(seq(1:3), function(x){
-  htests[["data.cor.test.pearson"]][[x]] <- cor.test(rnorm(10), rnorm(10), method = "pearson")
+# Correlation Tests, Spearman's rho
+htests[["cor.test.spearman"]] <- lapply(seq(htest.length), function(x){
+  htests[["cor.test.spearman"]][[x]] <- cor.test(rnorm(10), rnorm(10), method = "spearman")
+})
+
+# Correlation Tests, Kendall's tau
+htests[["cor.test.kendall"]] <- lapply(seq(htest.length), function(x){
+  htests[["cor.test.kendall"]][[x]] <- cor.test(rnorm(10), rnorm(10), method = "kendall")
 })
 
 # Kolmogorov-Smirnov Tests
-htests[["data.ks.test"]] <- lapply(seq(1:3), function(x){
-  htests[["data.ks.test"]][[x]] <- ks.test(rnorm(10), rnorm(10), method = "pearson")
+htests[["ks.test"]] <- lapply(seq(htest.length), function(x){
+  htests[["ks.test"]][[x]] <- ks.test(rnorm(10), rnorm(10))
 })
 
-htests[["data.cor.test.pearson"]][[1]] <- cor.test(rnorm(10), rnorm(10), method = "pearson")
+# Wilcox Tests, Paired Samples (Wilcoxon signed rank test)
+htests[["wilcox.test.paired"]] <- lapply(seq(htest.length), function(x){
+  htests[["wilcox.test.paired"]][[x]] <- wilcox.test(rnorm(10), rnorm(10), paired = TRUE)
+})
 
-data.cor.test.pearson <- list()
-data.pearson[[1]] <- cor.test(rnorm(10), rnorm(10), method = "pearson")
-data.pearson[[2]] <- cor.test(rnorm(10), rnorm(10), method = "pearson")
-data.pearson[[3]] <- cor.test(rnorm(10), rnorm(10), method = "pearson")
+# Wilcox Tests, Unpaired Samples (Mann-Whitney / Wilcoxon rank sum test)
+htests[["wilcox.test.unpaired"]] <- lapply(seq(htest.length), function(x){
+  htests[["wilcox.test.unpaired"]][[x]] <- wilcox.test(rnorm(10), rnorm(10), paired = FALSE)
+})
 
+# t Tests, Paired Samples
+htests[["t.test.paired"]] <- lapply(seq(htest.length), function(x){
+  htests[["t.test.paired"]][[x]] <- t.test(rnorm(10), rnorm(10), paired = TRUE)
+})
 
+# t Tests, Unpaired Samples
+htests[["t.test.unpaired"]] <- lapply(seq(htest.length), function(x){
+  htests[["t.test.unpaired"]][[x]] <- t.test(rnorm(10), rnorm(10), paired = FALSE)
+})
 
-#
-# b <- list()
-# b[[1]] <- ks.test(rnorm(10), rnorm(10))
-# b[[2]] <- ks.test(rnorm(10), rnorm(10))
-# b[[3]] <- ks.test(rnorm(10), rnorm(10))
-#
-# c <- list()
-# c[[1]] <- wilcox.test(rnorm(10), rnorm(10))
-# c[[2]] <- wilcox.test(rnorm(10), rnorm(10))
-# c[[3]] <- wilcox.test(rnorm(10), rnorm(10))
-#
-# d <- list()
-# d[[1]] <- t.test(rnorm(10), rnorm(10))
-# d[[2]] <- t.test(rnorm(10), rnorm(10))
-# d[[3]] <- t.test(rnorm(10), rnorm(10))
-#
-# htest_data_frame(a) # cor.test
-# htest_data_frame(b) # ks.test
-# htest_data_frame(c) # wilcox.test
-# htest_data_frame(d) # t.test
-#
-#
-#
-#
-# exlist1 <- list(list(1, 2, c(3, 0)),
-#                 list(1, 2, c(3, 0)),
-#                 list(1, 2, c(3, 0))
-#                 )
-# list_lengths(exlist1)
-#
-# exlist2 <- list(list(1, 2, 3),
-#                 list(1, 2, c(3, 0)),
-#                 list(1, 2, c(3, 0))
-# )
-# list_lengths(exlist2)
-#
-# exlist3 <- list(list(1, c(3, 0), c(3, 0)),
-#                 list(1, c(3, 0), c(3, 0)),
-#                 list(1, c(3, 0), c(3, 0))
-# )
-# list_lengths(exlist3)
+devtools::use_data(htests)
