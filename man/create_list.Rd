@@ -26,6 +26,5 @@ htest.names <- c("data.cor.test.pearson",
 
 # Generate lists, each of length 4
 create_list(htest.names, 4)
-
 }
 

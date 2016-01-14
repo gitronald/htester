@@ -20,12 +20,22 @@ Summarize the length of all items in a nested list with the the option of
 identifying lengths over one.
 }
 \examples{
-exlist <- list(list(1, 2, c(3, 0)),
-               list(1, c(3, 0), 2),
-               list(1, c(3, 0), 2)
-               )
+exlist1 <- list(list(1, 2, c(3, 0)),
+                list(1, 2, c(3, 0)),
+                list(1, 2, c(3, 0))
+                )
+list_lengths(exlist1)
 
-list_lengths(exlist)
+exlist2 <- list(list(1, 2, 3),
+                list(1, 2, c(3, 0)),
+                list(1, 2, c(3, 0))
+)
+list_lengths(exlist2)
 
+exlist3 <- list(list(1, c(3, 0), c(3, 0)),
+                list(1, c(3, 0), c(3, 0)),
+                list(1, c(3, 0), c(3, 0))
+)
+list_lengths(exlist3)
 }
 
