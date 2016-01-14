@@ -16,11 +16,8 @@ Returns a \code{data.frame} with data from one or more htests
 Convert an htest list, or a list of htest lists to a data.frame
 }
 \examples{
-a <- list()
-a[[1]] <- cor.test(rnorm(10), rnorm(10))
-a[[2]] <- cor.test(rnorm(10), rnorm(10))
-a[[3]] <- cor.test(rnorm(10), rnorm(10))
-htest_data_frame(a)
+data(htests)
+htest_data_frame(htests[["cor.test.pearson"]])
 
 }
 

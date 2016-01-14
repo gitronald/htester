@@ -7,11 +7,8 @@
 #' @export
 #'
 #' @examples
-#' a <- list()
-#' a[[1]] <- cor.test(rnorm(10), rnorm(10))
-#' a[[2]] <- cor.test(rnorm(10), rnorm(10))
-#' a[[3]] <- cor.test(rnorm(10), rnorm(10))
-#' htest_data_frame(a)
+#' data(htests)
+#' htest_data_frame(htests[["cor.test.pearson"]])
 #'
 htest_data_frame <- function(htest.list) {
   # Converts list of htest lists into a data.frame
