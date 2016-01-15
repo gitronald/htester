@@ -44,3 +44,71 @@ list_lengths <- function(data1, overOne = TRUE) {
     return (data1)
   }
 }
+
+
+# Level 1 List Map: Length
+list_map_lengths <- function(data1, data.frame = TRUE) {
+  map.lengths <- lapply(seq_along(data1),  # For each element in data1
+                       function(x) {      # Run this function
+                         sapply(seq_along(data1[[x]]),   # And for each element within each element in data1
+                                function(y) length(data1[[x]][[y]]) # Find the length
+                              )
+                     }
+              )
+  if (data.frame == TRUE) {
+    map.lengths <- setNames(data.frame(t(sapply(map.lengths, c))),
+                            names(data1[[1]]))
+  }
+  return(map.lengths)
+}
+
+
+# Level 1 List Map: Length
+list_map_names <- function(data1, data.frame = TRUE) {
+  map.names <- lapply(seq_along(data1),  # For each element in data1
+                      function(x) {      # Run this function
+                        sapply(names(data1[[x]]),   # And for each element within each element in data1
+                               function(y) names(data1[[x]][[y]]) # Find the length
+                        )
+                      }
+  )
+
+  if (data.frame == TRUE) {
+    map.names <- setNames(as.data.frame(t(sapply(map.names, c))),
+                          names(data1[[1]]))
+  }
+  return(map.names)
+}
+
+
+
+
+
+list_map <- function(data1, data.frame = T, type = c("names", "lengths")) {
+
+#   if(length(which)>1) {
+#     which <- 'sum'
+#   }
+#
+#   if(!(which %in% c('sum','proportion'))){
+#     stop("possible values for variable 'which' are c('sum','proportion').")
+#   }
+
+  map_type <- switch(type,
+                     names = names,
+                     lengths = length)
+
+  map.names <- lapply(seq_along(data1),  # For each element in data1
+                      function(x) {      # Run this function
+                        sapply(names(data1[[x]]),   # And for each element within each element in data1
+                               function(y) map_type(data1[[x]][[y]]) # Find the length
+                        )
+                      }
+  )
+
+  if (data.frame == TRUE) {
+    map.names <- setNames(data.frame(t(sapply(map.names, c))),
+                          names(data1[[1]]))
+  }
+  return(map.names)
+}
