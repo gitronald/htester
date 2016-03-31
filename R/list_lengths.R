@@ -64,6 +64,23 @@ list_map_lengths <- function(data1, data.frame = TRUE) {
 
 
 # Level 1 List Map: Length
+list_map_attributes <- function(data1, data.frame = TRUE) {
+  map.lengths <- lapply(seq_along(data1),  # For each element in data1
+                        function(x) {      # Run this function
+                          sapply(seq_along(data1[[x]]),   # And for each element within each element in data1
+                                 function(y) length(data1[[x]][[y]]) # Find the length
+                          )
+                        }
+  )
+  if (data.frame == TRUE) {
+    map.lengths <- setNames(data.frame(t(sapply(map.lengths, c))),
+                            names(data1[[1]]))
+  }
+  return(map.lengths)
+}
+
+
+# Level 1 List Map: Length
 list_map_names <- function(data1, data.frame = TRUE) {
   map.names <- lapply(seq_along(data1),  # For each element in data1
                       function(x) {      # Run this function

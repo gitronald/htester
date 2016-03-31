@@ -16,7 +16,7 @@ htest_data_frame <- function(htest.list) {
   # REPLACES ks.testm and cor.testm
   #
   data1 <- htest.list
-  item.lengths <- sapply(data1, length) # Find max list length
+  item.lengths <- sapply(data1, length)                # Find max list length
   col.names <- names(data1[[which.max(item.lengths)]]) # Take col names from largest sub list
 
   # Map list lengths
