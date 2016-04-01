@@ -1,7 +1,7 @@
 Package: htester
-Title: A data.frame approach to hypothesis testing
+Title: A data.frame approach to hypothesis testing results
 Version: 0.0.0.9000
-Authors@R: person(c("Ronald", "E."), "Robertson",, "rrobertson@aibrt.org", c("cre", "aut")),
+Authors@R: person(c("Ronald", "E."), "Robertson",, "rrobertson@aibrt.org", c("cre", "aut"))
 Description: R's htest (hypothesis testing) functions (e.g. t.test, wilcox.test, cor.test, etc.)
     are essential for conducting research, but offer output in a clunky list format that displays well
     in the console but makes comparisons an exercise in visual gymnastics and exporting results complicated.
