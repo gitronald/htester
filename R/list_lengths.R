@@ -46,19 +46,39 @@ list_lengths <- function(data1, overOne = TRUE) {
 }
 
 
-# Level 1 List Map: Length
+#' Create a map of lengths for items is a list
+#'
+#' @param data1 a list or list of lists composed of the same elements
+#' @param data.frame logical, if TRUE return output as data.frame
+#'
+#' @return Returns a
+#' @export
+#'
+#' @examples
 list_map_lengths <- function(data1, data.frame = TRUE) {
-  map.lengths <- lapply(seq_along(data1),  # For each element in data1
+
+  if(sum(grepl("statistic", names(lengths(data1)))) > 0) {  # Check if single list
+    map.lengths <- lengths(data1)
+
+    if (data.frame == TRUE) {
+      map.lengths <- setNames(data.frame(t(sapply(map.lengths, c))),
+                            names(data1))
+    }
+
+  } else {
+    map.lengths <- lapply(seq_along(data1),  # For each element in data1
                        function(x) {      # Run this function
                          sapply(seq_along(data1[[x]]),   # And for each element within each element in data1
                                 function(y) length(data1[[x]][[y]]) # Find the length
                               )
                      }
               )
-  if (data.frame == TRUE) {
-    map.lengths <- setNames(data.frame(t(sapply(map.lengths, c))),
-                            names(data1[[1]]))
+    if (data.frame == TRUE) {
+      map.lengths <- setNames(data.frame(t(sapply(map.lengths, c))),
+                              names(data1[[1]]))
+    }
   }
+
   return(map.lengths)
 }
 
@@ -82,13 +102,19 @@ list_map_attributes <- function(data1, data.frame = TRUE) {
 
 # Level 1 List Map: Length
 list_map_names <- function(data1, data.frame = TRUE) {
-  map.names <- lapply(seq_along(data1),  # For each element in data1
-                      function(x) {      # Run this function
-                        sapply(names(data1[[x]]),   # And for each element within each element in data1
-                               function(y) names(data1[[x]][[y]]) # Find the length
-                        )
-                      }
-  )
+
+  if(sum(grepl("statistic", names(lengths(df)))) > 0) {
+        map.names <- names(lengths(df))
+  } else {
+    map.names <- lapply(seq_along(data1),  # For each element in data1
+                        function(x) {      # Run this function
+                          sapply(names(data1[[x]]),   # And for each element within each element in data1
+                                 function(y) names(data1[[x]][y]) # Find the length
+                          )
+                        }
+    )
+  }
+
 
   if (data.frame == TRUE) {
     map.names <- setNames(as.data.frame(t(sapply(map.names, c))),
