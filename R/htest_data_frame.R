@@ -10,11 +10,15 @@
 #' data(htests)
 #' htest_data_frame(htests[["cor.test.pearson"]])
 #'
-htest_data_frame <- function(htest.list) {
+htest_data_frame <- function(data1) {
 
-  data1 <- htest.list
+  if(sum(grepl("statistic", names(lengths(data1)))) > 0) {
+    data1 <- list(data1)
+  }
+
   item.lengths <- sapply(data1, length)                # Find max list length
   col.names <- names(data1[[which.max(item.lengths)]]) # Take col names from largest sub list
+
 
   # Map list lengths
   ll <- list_map_lengths(data1)
@@ -55,6 +59,7 @@ htest_data_frame <- function(htest.list) {
 
   return(data_frame)
 }
+
 
 #' Convert an htest list, or a list of htest lists to a data.frame
 #'
