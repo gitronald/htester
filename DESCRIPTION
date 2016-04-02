@@ -3,9 +3,9 @@ Title: Convert HTest Results to Data.Frames
 Version: 0.0.0.9000
 Authors@R: person(c("Ronald", "E."), "Robertson",, "rrobertson@aibrt.org", c("cre", "aut"))
 Description: R's htest (hypothesis testing) functions (e.g. t.test, wilcox.test, cor.test, etc.)
-    are essential for conducting research, but offer output in a clunky list format that displays well
-    in the console but makes comparisons an exercise in visual gymnastics and exporting results complicated.
-    This package takes these htest lists as input, flattens them, and returns a data.frame where comparisons
+    are essential for conducting research, but offer output in a clunky list format. These lists display well
+    in the console but makes comparisons an exercise in visual gymnastics and exporting results a complicated
+    affair. This package takes these htest lists as input, flattens them, and returns a data.frame where comparisons
     can quickly be made and results can easily be exported.
 Depends:
     R (>= 3.2.3)
