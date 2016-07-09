@@ -22,7 +22,7 @@ data(htests)
 ### htests
 * R's `htest` outputs are returned in a list format that renders well in the console, but aren't ideal for writing out in table form. For example, consider the output of `cor.test`:
 
-``` {r}
+```{r}
 > x = rnorm(100, 100, 40)
 > y = rnorm(100, 100, 40)
 > cor.test(x, y, method = "spearman")
@@ -40,8 +40,8 @@ sample estimates:
 
 * htester functions provide the same tests, but return results in data.frame:
 
-``` {r}
-> cor_test(x, y)
+```{r}
+> cor_test(x, y, method = "spearman")
 ```
 ```
   statistic.S p.value estimate.rho null.value.rho alternative                          method     data.name
