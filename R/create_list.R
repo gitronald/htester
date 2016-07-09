@@ -1,23 +1,16 @@
 #' Create a list of named lists
 #'
-#' Use \code{create_list} to create a list of named lists, each of length \code{list.lengths}.
+#' Use \code{create_list} to create a list of named lists, each of length
+#' \code{list.lengths}.
 #'
 #' @param list.names a string vector containing list names
-#' @param list.lengths a numeric value that determines the length of each \code{list.names} list
-#'
-#' @return
-#'    Returns a list of named lists, each of length \code{list.lengths}.
+#' @param list.lengths a numeric value that determines the length of each
+#'   \code{list.names} list
+#' @return Returns a list of named lists, each of length \code{list.lengths}.
 #' @export
-#'
 #' @examples
-#' # Collect list names
-#' htest.names <- c("data.cor.test.pearson",
-#'                  "data.ks.test",
-#'                  "data.wilcox.test.wilcox",
-#'                  "data.t.test")
+#' create_list(c("potatoTypes", "tomatoTypes"), 4)
 #'
-#' # Generate lists, each of length 4
-#' create_list(htest.names, 4)
 create_list <- function(list.names, list.lengths) {
   new.list <- sapply(list.names, function(x) lapply(x, function(x) vector("list", length = list.lengths)))
   return(new.list)

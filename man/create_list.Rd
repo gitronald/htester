@@ -9,22 +9,18 @@ create_list(list.names, list.lengths)
 \arguments{
 \item{list.names}{a string vector containing list names}
 
-\item{list.lengths}{a numeric value that determines the length of each \code{list.names} list}
+\item{list.lengths}{a numeric value that determines the length of each
+\code{list.names} list}
 }
 \value{
 Returns a list of named lists, each of length \code{list.lengths}.
 }
 \description{
-Use \code{create_list} to create a list of named lists, each of length \code{list.lengths}.
+Use \code{create_list} to create a list of named lists, each of length
+\code{list.lengths}.
 }
 \examples{
-# Collect list names
-htest.names <- c("data.cor.test.pearson",
-                 "data.ks.test",
-                 "data.wilcox.test.wilcox",
-                 "data.t.test")
+create_list(c("potatoTypes", "tomatoTypes"), 4)
 
-# Generate lists, each of length 4
-create_list(htest.names, 4)
 }
 

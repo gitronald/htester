@@ -4,16 +4,17 @@
 \alias{htest_data_frame}
 \title{Convert an htest list, or a list of htest lists to a data.frame}
 \usage{
-htest_data_frame(htest.list)
+htest_data_frame(data1)
 }
 \arguments{
 \item{htest.list}{a single htest list or a list of htest lists}
 }
 \value{
-Returns a \code{data.frame} with data from one or more htests
+Returns a \code{data.frame} where each row represents a list from
+one or more htests
 }
 \description{
-Convert an htest list, or a list of htest lists to a data.frame
+To see the list of compatible htest lists run: names(htests)
 }
 \examples{
 data(htests)
