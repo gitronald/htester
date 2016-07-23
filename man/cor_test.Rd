@@ -12,7 +12,7 @@ cor_test(var1, var2, method = "pearson", round = TRUE, ...)
 \item{var2}{a data.frame column to compare with \code{var1}}
 
 \item{method}{string, specify the correlation method to use, either
-'spearman', 'pearson', or 'kendall}
+'spearman', 'pearson', or 'kendall'}
 
 \item{round}{logical, whether or not to round the results}
 }
