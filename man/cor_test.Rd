@@ -4,12 +4,15 @@
 \alias{cor_test}
 \title{Correlation tests}
 \usage{
-cor_test(var1, var2, round = TRUE, ...)
+cor_test(var1, var2, method = "pearson", round = TRUE, ...)
 }
 \arguments{
 \item{var1}{a data.frame column to compare with \code{var2}}
 
 \item{var2}{a data.frame column to compare with \code{var1}}
+
+\item{method}{string, specify the correlation method to use, either
+'spearman', 'pearson', or 'kendall}
 
 \item{round}{logical, whether or not to round the results}
 }

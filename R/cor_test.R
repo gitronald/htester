@@ -5,6 +5,8 @@
 #'
 #' @param var1 a data.frame column to compare with \code{var2}
 #' @param var2 a data.frame column to compare with \code{var1}
+#' @param method string, specify the correlation method to use, either
+#'   'spearman', 'pearson', or 'kendall'
 #' @param round logical, whether or not to round the results
 #'
 #' @return Returns a data.frame version of the standard htest output.
@@ -15,7 +17,7 @@
 #' @examples
 #' cor_test(rnorm(1:100, 100), rnorm(1:100, 100), method = "pearson")
 #'
-cor_test = function(var1, var2, round = TRUE, ...){
+cor_test = function(var1, var2, method = 'pearson', round = TRUE, ...){
 
   data1 = cor.test(var1, var2, ...)
   data1 = data.frame(t(unlist(data1)))
@@ -28,7 +30,7 @@ cor_test = function(var1, var2, round = TRUE, ...){
 
   if(round){
     for(i in index) {
-      data1[, i] = round(data1[, i], 4)
+      data1[, i] = format(round(data1[, i], 4), scientific = F)
     }
   }
 
