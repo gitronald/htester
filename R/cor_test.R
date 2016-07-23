@@ -30,7 +30,7 @@ cor_test = function(var1, var2, method = 'pearson', round = TRUE, ...){
 
   if(round){
     for(i in index) {
-      data1[, i] = format(round(data1[, i], 4), scientific = F)
+      data1[, i] = format(round(data1[, i], 4), nsmall = 4, scientific = F)
     }
   }
 
